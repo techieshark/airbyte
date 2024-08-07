@@ -36,12 +36,13 @@ import org.apache.commons.text.StringSubstitutor
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.function.Executable
 
-class SnowflakeSqlGeneratorIntegrationTest : BaseSqlGeneratorIntegrationTest<SnowflakeState>() {
+class SnowflakeSqlGeneratorWithoutMergeIntegrationTest :
+    BaseSqlGeneratorIntegrationTest<SnowflakeState>() {
     override val supportsSafeCast: Boolean
         get() = true
 
     override val sqlGenerator: SnowflakeSqlGenerator
-        get() = SnowflakeSqlGenerator(0, true)
+        get() = SnowflakeSqlGenerator(0)
 
     override val destinationHandler: SnowflakeDestinationHandler
         get() = SnowflakeDestinationHandler(databaseName, database, namespace.uppercase())
