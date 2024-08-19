@@ -236,6 +236,7 @@ const ConnectorMetadataCallout = ({
   syncSuccessRate,
   usageRate,
   lastUpdated,
+  sbomUrl,
 }) => (
   <Callout className={styles.connectorMetadataCallout}>
     <dl className={styles.connectorMetadata}>
@@ -280,6 +281,11 @@ const ConnectorMetadataCallout = ({
             <span className={styles.deemphasizeText}>{`(Last updated ${dayjs(
               lastUpdated
             ).fromNow()})`}</span>
+          )}
+          {sbomUrl && (
+            <a href={sbomUrl} target="_blank">
+            SBOM
+            </a>
           )}
         </MetadataStat>
       )}
@@ -339,6 +345,7 @@ export const HeaderDecoration = ({
   syncSuccessRate,
   usageRate,
   lastUpdated,
+  sbomUrl,
 }) => {
   const isOss = boolStringToBool(isOssString);
   const isCloud = boolStringToBool(isCloudString);
@@ -369,6 +376,7 @@ export const HeaderDecoration = ({
         syncSuccessRate={syncSuccessRate}
         usageRate={usageRate}
         lastUpdated={lastUpdated}
+        sbomUrl={sbomUrl}
       />
     </>
   );
